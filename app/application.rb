@@ -43,9 +43,9 @@ class Application
   
   def handle_add(item)
       if @@items.include?(item)
-        resp.write "added #{item}"
+        return "added #{item}"
       else 
-        resp.write "We don't have that item"
+        return "We don't have that item"
       end 
   end 
 end
