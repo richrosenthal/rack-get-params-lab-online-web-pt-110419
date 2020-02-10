@@ -23,11 +23,17 @@ class Application
           end
         end 
     elsif req.path.match(/add/)
+      item = req.params["item"]
       
+      if @@items.include?(item)
+        @@cart << item 
+        resp.write "added #{item}"
+     else 
+       resp.write "We don't have that item"
+     end 
     
-      
     else
-      resp.write "Your cart is empty"
+      resp.write "Path not found"
     end
 
     resp.finish
@@ -40,4 +46,13 @@ class Application
       return "Couldn't find #{search_term}"
     end
   end
+  
+  # def handle_add(item)
+  #     if @@items.include?(item)
+  #       @@cart << item
+  #       return "added #{item}"
+  #     else 
+  #       return "We don't have that item"
+  #     end 
+  # end 
 end
