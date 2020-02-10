@@ -24,11 +24,12 @@ class Application
         end 
     elsif req.path.match(/add/)
       if @@items.include?(item)
-      
-    
-      
+        resp.write "added #{item}"
+      else 
+        resp.write "WE don't have that item"
+      end 
     else
-      resp.write "Your cart is empty"
+      resp.write "Path not found"
     end
 
     resp.finish
